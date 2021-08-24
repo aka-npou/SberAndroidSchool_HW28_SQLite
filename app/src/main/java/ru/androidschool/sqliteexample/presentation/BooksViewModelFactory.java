@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
+import ru.androidschool.sqliteexample.data.db.BookDbHelper;
 import ru.androidschool.sqliteexample.data.repository.BooksRepositoryImpl;
 import ru.androidschool.sqliteexample.domain.BooksInteractor;
 
@@ -24,6 +25,9 @@ class BooksViewModelFactory implements ViewModelProvider.Factory {
         return (T) new MainViewModel(
                 new BooksInteractor(
                         new BooksRepositoryImpl(
-                        )));
+                                new BookDbHelper(mContext)
+                        )
+                )
+        );
     }
 }
