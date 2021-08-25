@@ -5,7 +5,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -32,6 +31,7 @@ public class BooksRepositoryImpl implements BooksRepository {
         values.put(BooksTable.Columns.NAME, "синяя книга");
         values.put(BooksTable.Columns.AUTHOR, "известный");
         values.put(BooksTable.Columns.SHELF, "777");
+        values.put(BooksTable.Columns.COUNT, "1");
 
         long id = database.insert(BooksTable.NAME, null, values);
 
@@ -49,7 +49,8 @@ public class BooksRepositoryImpl implements BooksRepository {
                 BooksTable.Columns.UUID,
                 BooksTable.Columns.NAME,
                 BooksTable.Columns.AUTHOR,
-                BooksTable.Columns.SHELF
+                BooksTable.Columns.SHELF,
+                BooksTable.Columns.COUNT
         };
 
         List<Book> books = new LinkedList<>();
@@ -62,8 +63,8 @@ public class BooksRepositoryImpl implements BooksRepository {
                         cursor.getString(cursor.getColumnIndexOrThrow(BooksTable.Columns.UUID)),
                         cursor.getString(cursor.getColumnIndexOrThrow(BooksTable.Columns.NAME)),
                         cursor.getString(cursor.getColumnIndexOrThrow(BooksTable.Columns.AUTHOR)),
-                        cursor.getInt(cursor.getColumnIndexOrThrow(BooksTable.Columns.SHELF))
-                        ));
+                        cursor.getInt(cursor.getColumnIndexOrThrow(BooksTable.Columns.SHELF)),
+                        cursor.getInt(cursor.getColumnIndexOrThrow(BooksTable.Columns.COUNT))));
             }
         }
         return books;

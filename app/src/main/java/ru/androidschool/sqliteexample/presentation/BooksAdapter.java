@@ -45,6 +45,7 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookViewHold
         private final TextView mTitleView;
         private final TextView mUuidView;
         private final TextView mShelfView;
+        private final TextView mCountView;
 
         public BookViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -52,6 +53,7 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookViewHold
             mTitleView = itemView.findViewById(R.id.bookTitle);
             mUuidView = itemView.findViewById(R.id.bookUuid);
             mShelfView = itemView.findViewById(R.id.bookShelf);
+            mCountView = itemView.findViewById(R.id.bookCount);
         }
 
         void bind(@NonNull Book book) {
@@ -59,6 +61,7 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookViewHold
             mTitleView.setText(book.title);
             mUuidView.setText(book.uuid);
             mShelfView.setText(String.valueOf(book.shelfNumber));
+            mCountView.setText(String.valueOf(book.count));
         }
     }
 }
