@@ -6,7 +6,7 @@ import ru.androidschool.sqliteexample.domain.model.Book;
 
 public interface BooksRepository {
 
-    void initRepository();
+    void initRepository(List<Book> books);
 
     List<Book> books();
 
