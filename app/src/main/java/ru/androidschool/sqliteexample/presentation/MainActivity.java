@@ -16,12 +16,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         RecyclerView listView = findViewById(R.id.bookList);
+        RecyclerView listClientView = findViewById(R.id.clientList);
 
         MainViewModel viewModel = new ViewModelProvider(
                 this, new BooksViewModelFactory(getApplicationContext())
         ).get(MainViewModel.class);
+
         viewModel.getBooksData().observe(this, books ->
                 listView.setAdapter(new BooksAdapter(books)));
+
+        viewModel.getClientData().observe(this, clients ->
+                listClientView.setAdapter(new ClientAdapter(clients)));
     }
 
 }
